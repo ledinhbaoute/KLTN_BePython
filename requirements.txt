@@ -12,5 +12,3 @@ python-dotenv==1.0.1
 scikit_learn==1.1.0
 SQLAlchemy==2.0.30
 tensorflow==2.8.0
-~pencv_python==4.6.0.66
-~pencv_python==4.7.0.68

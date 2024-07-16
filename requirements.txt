@@ -1,8 +1,10 @@
 azure-ai-contentsafety==1.0.0
-gunicorn==20.1.0
+azure-core==1.30.2
 Flask==3.0.3
 Flask_Cors==4.0.1
 flask_sqlalchemy==3.1.1
+mysqlclient==2.2.4
+mysql-connector-python==8.0.29
 numpy==1.24.1
 opencv_python==4.10.0.82
 pandas==1.4.2

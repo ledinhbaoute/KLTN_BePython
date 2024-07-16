@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object(Config)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "https://kltn-comic-fe.vercel.app"}})
 
 db = SQLAlchemy(app)
 

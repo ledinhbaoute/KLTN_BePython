@@ -1,4 +1,4 @@
-azure_storage==0.37.0
+azure-ai-contentsafety==1.0.0
 gunicorn==20.1.0
 Flask==3.0.3
 Flask_Cors==4.0.1

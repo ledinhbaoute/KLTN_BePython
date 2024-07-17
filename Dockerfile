@@ -19,4 +19,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Chạy ứng dụng với Gunicorn
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]
+CMD ["gunicorn", "-w", "4", "-b", "https://kltnbepython-production.up.railway.app", "app:app"]

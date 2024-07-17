@@ -1,5 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'mysql+pymysql://root:szHQAXGnGXZJEOBaJQmFKxuEbSxEgFYm@monorail.proxy.rlwy.net:27074/railway')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False

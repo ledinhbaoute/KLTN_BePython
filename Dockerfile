@@ -1,5 +1,5 @@
 # Sử dụng hình ảnh cơ sở của Python
-FROM python:3.9-slim
+FROM python:3.10.4-slim
 
 # Cài đặt các thư viện hệ thống cần thiết
 RUN apt-get update && apt-get install -y \

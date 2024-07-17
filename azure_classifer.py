@@ -16,36 +16,26 @@ endpoint = os.getenv('AZURE_END_POINT')
     # Create a Content Safety client
 client = ContentSafetyClient(endpoint, AzureKeyCredential(key))
 
+def resize_image(image_data, max_size=(2048, 2048)):
+    # Mở hình ảnh từ dữ liệu binary
+    image = Image.open(io.BytesIO(image_data))
+    
+    # Giảm kích thước hình ảnh
+    image.thumbnail(max_size, Image.ANTIALIAS)
+    
+    # Lưu hình ảnh đã thay đổi kích thước vào buffer
+    buffer = io.BytesIO()
+    image.save(buffer, format=image.format)
+    buffer.seek(0)
+    
+    return buffer
 
 def azure_predict_image(image_file):
-    # input_image = Image.open(image_file)
-    # image_bytes = image_file.read()
-    # width, height = input_image.size
-    # max_dimension = 2048
-    # # Kiểm tra nếu một trong hai chiều vượt quá giới hạn
-    # if width > max_dimension or height > max_dimension:
-    #     # Tính toán tỷ lệ thay đổi kích thước
-    #     if width > height:
-    #         ratio = max_dimension / float(width)
-    #         new_width = max_dimension
-    #         new_height = int((float(height) * float(ratio)))
-    #     else:
-    #         ratio = max_dimension / float(height)
-    #         new_width = int((float(width) * float(ratio)))
-    #         new_height = max_dimension
 
-    #         # Thay đổi kích thước ảnh
-    #     input_image = input_image.resize((new_width, new_height), Image.ANTIALIAS)
+    image_data = image_file.read()
+    resized_image_buffer = resize_image(image_data)
 
-    #     # Convert image to bytes for Azure request
-    #     try:
-    #         image_bytes = io.BytesIO()
-    #         input_image.save(image_bytes, format='PNG')
-    #         image_bytes = image_bytes.getvalue()
-    #     except Exception as e:
-    #         raise ValueError(f"Could not convert image to bytes: {e}")
-    # Build request
-    request = AnalyzeImageOptions(image=ImageData(content=image_file.read()))
+    request = AnalyzeImageOptions(image=ImageData(content=resized_image_buffer.read()))
 
     # Analyze image
     try:

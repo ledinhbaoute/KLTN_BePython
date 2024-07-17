@@ -18,5 +18,5 @@ RUN pip install -r requirements.txt
 # Sao chép toàn bộ mã nguồn vào thư mục làm việc
 COPY . .
 
-# Chạy ứng dụng Flask
-CMD ["python", "app.py"]
+# Chạy ứng dụng với Gunicorn
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]
